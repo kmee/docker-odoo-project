@@ -42,7 +42,7 @@ cp -r install/ ${TMP}
 cp -r start-entrypoint.d/ ${TMP}
 cp -r before-migrate-entrypoint.d/ ${TMP}
 
-docker build --no-cache -f ${TMP}/Dockerfile -t ${BUILD_TAG} ${TMP}
-docker build --no-cache -f ${TMP}/Dockerfile-onbuild -t ${BUILD_TAG}-onbuild ${TMP}
-docker build --no-cache -f ${TMP}/Dockerfile-batteries -t ${BUILD_TAG}-batteries ${TMP}
-docker build --no-cache -f ${TMP}/Dockerfile-batteries-onbuild -t ${BUILD_TAG}-batteries-onbuild ${TMP}
+docker buildx build --no-cache -f ${TMP}/Dockerfile -t ${BUILD_TAG} ${TMP} --platform=linux/arm64,linux/amd64
+docker buildx build --no-cache -f ${TMP}/Dockerfile-onbuild -t ${BUILD_TAG}-onbuild ${TMP} --platform=linux/arm64,linux/amd64
+docker buildx build --no-cache -f ${TMP}/Dockerfile-batteries -t ${BUILD_TAG}-batteries ${TMP} --platform=linux/arm64,linux/amd64
+docker buildx build --no-cache -f ${TMP}/Dockerfile-batteries-onbuild -t ${BUILD_TAG}-batteries-onbuild ${TMP} --platform=linux/arm64,linux/amd64

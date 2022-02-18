@@ -2,11 +2,7 @@ ifndef VERSION
 $(error VERSION is not set)
 endif
 
-ifeq ($(TARGET), GHCR)
-    NAME=ghcr.io/camptocamp/odoo-project
-else
-    NAME=camptocamp/odoo-project
-endif
+NAME=registry.kmee.com.br/odoo/odoo-project
 
 IMAGE=$(NAME):$(VERSION)
 IMAGE_LATEST=$(IMAGE)-latest
