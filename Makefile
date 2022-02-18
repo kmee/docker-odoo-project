@@ -2,7 +2,7 @@ ifndef VERSION
 $(error VERSION is not set)
 endif
 
-NAME=registry.kmee.com.br/odoo/odoo-project
+NAME=registry.kmee.com.br/public-projects/odoo-project
 
 IMAGE=$(NAME):$(VERSION)
 IMAGE_LATEST=$(IMAGE)-latest
