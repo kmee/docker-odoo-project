@@ -31,11 +31,13 @@ stages:
           - task: Bash@3
             displayName: 'Build'
             inputs:
-              targetType: 'filePath'
-              filePath: VERSION=12.0-buster make build
+              targetType: inline
+              script: |
+                VERSION=12.0-buster make build
 
           - task: Bash@3
             displayName: 'Push'
             inputs:
-              targetType: 'filePath'
-              filePath: make VERSION=12.0-buster push_latest_main
+              targetType: inline
+              script: |
+                 VERSION=12.0-buster make push_latest_main
