@@ -27,6 +27,7 @@ ENV BUILD_PACKAGE \
     libjpeg-dev \
     libpng-dev \
     zlib1g-dev \
+    libffi-dev \
     git
 
 # Install some deps, lessc and less-plugin-clean-css, and wkhtmltopdf
