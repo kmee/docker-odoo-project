@@ -40,4 +40,4 @@ stages:
             inputs:
               targetType: inline
               script: |
-                 VERSION=12.0-buster make push_latest_main
+                 VERSION=12.0-buster make push
