@@ -6,7 +6,7 @@ trigger:
       - master
 
 stages:
-  - stage: Build ARM
+  - stage: arm
     pool:
       name: arm
       vmImage: 'Ubuntu-20.04'
