@@ -1,0 +1,38 @@
+pr: none # Disable pull request triggers.
+
+trigger:
+  branches:
+    include:
+      - master
+
+stages:
+  - stage: Build ARM
+    pool:
+      name: arm
+      vmImage: 'Ubuntu-20.04'
+
+    ## Job to create release and add tag
+    jobs:
+      - job: Release
+        displayName: Release
+        variables:
+          - group: wahalla-kds
+        steps:
+
+          - task: Docker@2
+            displayName: Login to KMEE registry
+            inputs:
+              command: login
+              containerRegistry: 'kmee-registry'
+
+          - task: Bash@3
+            displayName: 'Build'
+            inputs:
+              targetType: 'filePath'
+              filePath: make VERSION=12.0-buster build
+
+          - task: Bash@3
+            displayName: 'Push'
+            inputs:
+              targetType: 'filePath'
+              filePath: make VERSION=12.0-buster push_latest_main
